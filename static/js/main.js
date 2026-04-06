@@ -1,5 +1,7 @@
 import { Solver } from './solver.js';
 import { Renderer } from './renderer.js';
+import { Interaction } from './interaction.js';
+import { UI } from './ui.js';
 import { loadPreset } from './presets.js';
 
 async function init() {
@@ -42,10 +44,11 @@ async function init() {
     const solver = await Solver.create(device, numX, numY);
     const container = document.getElementById('canvas-container');
     const renderer = new Renderer(container, device, solver);
+    const interaction = new Interaction(renderer.canvas, solver);
 
     loadPreset('mitosis', solver);
 
-    let substepsPerFrame = 16;
+    const ui = new UI(solver, renderer, interaction);
 
     let frameTimeSmoothed = 0;
     let hudCounter = 0;
@@ -55,7 +58,7 @@ async function init() {
         const t0 = performance.now();
 
         if (!solver.paused) {
-            solver.step(substepsPerFrame);
+            solver.step(ui.substepsPerFrame);
         }
         renderer.draw();
 
@@ -67,7 +70,7 @@ async function init() {
                 frameTimeSmoothed.toFixed(1) + ' ms/frame | ' +
                 Math.round(1000 / frameTimeSmoothed) + ' fps\n' +
                 'grid: ' + solver.numX + '\u00D7' + solver.numY +
-                ' | substeps: ' + substepsPerFrame;
+                ' | substeps: ' + ui.substepsPerFrame;
         }
 
         requestAnimationFrame(frame);
