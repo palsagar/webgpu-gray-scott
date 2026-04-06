@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gray-Scott</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="no-webgpu">
+  <div>
+    <p>Your browser does not support WebGPU.</p>
+    <p>Please use a recent version of Chrome or Edge.</p>
+  </div>
+</div>
+
+<div id="device-lost-banner">
+  GPU device lost.
+  <button onclick="location.reload()">Reload</button>
+</div>
+
+<div id="app">
+
+  <!-- Welcome modal -->
+  <div id="welcome-overlay">
+    <div id="welcome-modal">
+      <div class="welcome-title-row">
+        <h1>Gray-Scott</h1>
+        <span class="welcome-badge">WebGPU</span>
+      </div>
+
+      <p class="welcome-desc">
+        Watch <strong>Turing patterns</strong> emerge in real time.
+        This simulator solves the <em>Gray-Scott reaction-diffusion equations</em>
+        entirely on your GPU using <strong>WebGPU compute shaders</strong>.
+        Explore spots, mazes, worms, and chaos by selecting presets
+        or tuning parameters live.
+      </p>
+
+      <div id="gpu-status-card">
+        <div class="gpu-status-badge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/>
+          </svg>
+          WebGPU is available
+        </div>
+        <p class="gpu-status-text">
+          Adapter: <strong id="gpu-adapter-name">detecting&hellip;</strong>
+        </p>
+      </div>
+
+      <button id="start-sim-btn">Start Simulation</button>
+    </div>
+  </div>
+
+  <div id="title-bar">
+    <span id="app-name">Gray-Scott</span>
+    <span class="badge">WebGPU</span>
+    <span class="title-spacer"></span>
+  </div>
+
+  <div id="preset-bar">
+    <span class="preset-label">Preset:</span>
+    <button class="preset-btn active" data-preset="mitosis">Mitosis</button>
+    <button class="preset-btn" data-preset="spots">Spots</button>
+    <button class="preset-btn" data-preset="mazes">Mazes</button>
+    <button class="preset-btn" data-preset="holes">Holes</button>
+    <button class="preset-btn" data-preset="worms">Worms</button>
+    <button class="preset-btn" data-preset="chaos">Chaos</button>
+  </div>
+
+  <div id="canvas-container">
+    <div id="colorbar">
+      <span class="colorbar-label">1.0</span>
+      <div id="colorbar-gradient"></div>
+      <span class="colorbar-label">0.0</span>
+      <span class="colorbar-unit">V</span>
+    </div>
+    <div id="perf-hud">-- ms/frame</div>
+  </div>
+
+  <div class="toolbar">
+    <div class="toolbar-group">
+      <span class="toolbar-label">Parameters:</span>
+      <label class="slider-inline">
+        F <input type="range" id="slider-f" min="0.01" max="0.08" step="0.001" value="0.028">
+        <span id="val-f">0.028</span>
+      </label>
+      <label class="slider-inline">
+        k <input type="range" id="slider-k" min="0.03" max="0.07" step="0.001" value="0.062">
+        <span id="val-k">0.062</span>
+      </label>
+    </div>
+
+    <div class="toolbar-group">
+      <button id="btn-play" class="btn btn-play">&#9208; Pause</button>
+      <button id="btn-step" class="btn">Step</button>
+      <button id="btn-reset" class="btn">Reset</button>
+    </div>
+
+    <div class="toolbar-group">
+      <label class="slider-inline">
+        Speed <input type="range" id="slider-substeps" min="1" max="64" step="1" value="16">
+        <span id="val-substeps">16</span>
+      </label>
+      <label class="slider-inline">
+        Brush <input type="range" id="slider-brush" min="1" max="20" step="1" value="5">
+        <span id="val-brush">5</span>
+      </label>
+    </div>
+
+    <div class="toolbar-group">
+      <span class="toolbar-label">Grid:</span>
+      <div class="resolution-picker">
+        <button class="res-btn" data-res="128">128</button>
+        <button class="res-btn active" data-res="256">256</button>
+        <button class="res-btn" data-res="512">512</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  if (!navigator.gpu) {
+    document.getElementById('no-webgpu').style.display = 'flex';
+    document.getElementById('app').style.display = 'none';
+  }
+</script>
+
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>
