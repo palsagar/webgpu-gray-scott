@@ -51,6 +51,204 @@
       </div>
 
       <button id="start-sim-btn">Start Simulation</button>
+      <p class="welcome-guide-link">New here? <a id="open-guide-from-welcome" href="#">Read the Guide</a></p>
+    </div>
+  </div>
+
+  <!-- Guide modal overlay -->
+  <div id="guide-overlay">
+    <div id="guide-modal">
+      <button class="welcome-close" id="guide-close" aria-label="Close">&times;</button>
+      <div class="welcome-title-row">
+        <h1>Gray-Scott Guide</h1>
+        <span class="welcome-badge">WebGPU</span>
+      </div>
+
+      <!-- Section 1: Getting Started -->
+      <div class="guide-section">
+        <div class="guide-section-header">
+          <div>
+            <span class="guide-section-title">Getting Started</span>
+            <span class="guide-section-summary">Paint strokes and watch patterns emerge</span>
+          </div>
+          <span class="guide-chevron">&#9656;</span>
+        </div>
+        <div class="guide-section-body">
+          <div class="guide-section-content">
+            <p>Click and drag on the canvas to seed chemical <strong>V</strong> (the activator) and watch patterns grow from your brush strokes. Select a <strong>preset</strong> from the bar to explore different pattern regimes, or tune the <strong>F</strong> and <strong>k</strong> sliders in real time. The entire simulation runs on your GPU via WebGPU compute shaders.</p>
+            <div class="guide-learn-more">
+              <div class="guide-learn-more-toggle">&#9656; Learn more about the Gray-Scott model</div>
+              <div class="guide-learn-more-body">
+                <p>The Gray-Scott model is one of the most studied reaction-diffusion systems, first systematically explored by Pearson in his 1993 <em>Science</em> paper. He mapped the (F, k) parameter plane computationally and identified ~12 qualitatively distinct pattern regimes. The model has since become the canonical testbed for pattern formation, bifurcation theory, and nonlinear dynamics &mdash; essentially the hydrogen atom of reaction-diffusion systems.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: The Gray-Scott System -->
+      <div class="guide-section">
+        <div class="guide-section-header">
+          <div>
+            <span class="guide-section-title">The Gray-Scott System</span>
+            <span class="guide-section-summary">Two chemicals, one autocatalytic reaction</span>
+          </div>
+          <span class="guide-chevron">&#9656;</span>
+        </div>
+        <div class="guide-section-body">
+          <div class="guide-section-content">
+            <p>Two chemicals interact: <strong>U</strong> (substrate) and <strong>V</strong> (activator). U is continuously fed into the system from a reservoir; V is continuously removed. The core reaction <strong>U + 2V &rarr; 3V</strong> consumes substrate and self-amplifies activator. The interplay between diffusion, reaction, feed, and removal creates spontaneous pattern formation &mdash; a <em>Turing instability</em>.</p>
+            <div class="guide-learn-more">
+              <div class="guide-learn-more-toggle">&#9656; Learn more about the equations</div>
+              <div class="guide-learn-more-body">
+                <p>The equations: <strong>du/dt = D<sub>u</sub>&nabla;&sup2;u &minus; uv&sup2; + F(1&minus;u)</strong> and <strong>dv/dt = D<sub>v</sub>&nabla;&sup2;v + uv&sup2; &minus; (F+k)v</strong>. The condition D<sub>u</sub> &gt; D<sub>v</sub> (substrate diffuses faster than activator) is the essential ingredient for pattern formation &mdash; long-range inhibition combined with short-range activation. The feed rate F replenishes U from a reservoir held at u=1; the kill rate k removes V.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Presets & Pattern Types -->
+      <div class="guide-section">
+        <div class="guide-section-header">
+          <div>
+            <span class="guide-section-title">Presets &amp; Pattern Types</span>
+            <span class="guide-section-summary">12 regimes in the (F, k) parameter space</span>
+          </div>
+          <span class="guide-chevron">&#9656;</span>
+        </div>
+        <div class="guide-section-body">
+          <div class="guide-section-content">
+            <div class="guide-param-row">
+              <span class="guide-param-name">Spots / Solitons</span>
+              <span class="guide-param-desc">Isolated blobs that persist indefinitely &mdash; stable soliton solutions.</span>
+            </div>
+            <div class="guide-param-row">
+              <span class="guide-param-name">Pulsating solitons</span>
+              <span class="guide-param-desc">Spots that oscillate in size, near a Hopf bifurcation.</span>
+            </div>
+            <div class="guide-param-row">
+              <span class="guide-param-name">Worms</span>
+              <span class="guide-param-desc">Elongated filaments that crawl and avoid each other.</span>
+            </div>
+            <div class="guide-param-row">
+              <span class="guide-param-name">Mazes</span>
+              <span class="guide-param-desc">Labyrinthine stripe networks that coarsen slowly over time.</span>
+            </div>
+            <div class="guide-param-row">
+              <span class="guide-param-name">Holes</span>
+              <span class="guide-param-desc">Dark holes in a bright background &mdash; the topological dual of spots.</span>
+            </div>
+            <div class="guide-param-row">
+              <span class="guide-param-name">Chaos</span>
+              <span class="guide-param-desc">Disordered, constantly changing &mdash; no long-time regularity despite deterministic dynamics.</span>
+            </div>
+            <div class="guide-param-row">
+              <span class="guide-param-name">Waves</span>
+              <span class="guide-param-desc">Traveling wavefronts that propagate across the domain.</span>
+            </div>
+            <div class="guide-param-row">
+              <span class="guide-param-name">U-Skate World</span>
+              <span class="guide-param-desc">Exotic moving structures &mdash; named after a region in Pearson&rsquo;s phase diagram.</span>
+            </div>
+            <div class="guide-learn-more">
+              <div class="guide-learn-more-toggle">&#9656; Learn more about the parameter space</div>
+              <div class="guide-learn-more-body">
+                <p>The (F, k) plane is crossed by several codimension-1 bifurcation curves (saddle-node, Turing, Hopf). Small changes in F or k can push the system across a bifurcation, producing qualitatively different behavior. Try dragging the F slider while the simulation runs to see live transitions between regimes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Brush Painting -->
+      <div class="guide-section">
+        <div class="guide-section-header">
+          <div>
+            <span class="guide-section-title">Brush Painting</span>
+            <span class="guide-section-summary">Seed patterns by clicking and dragging</span>
+          </div>
+          <span class="guide-chevron">&#9656;</span>
+        </div>
+        <div class="guide-section-body">
+          <div class="guide-section-content">
+            <p>Click and drag on the canvas to paint activator (<strong>V</strong>) onto the field. The brush sets u=0.5, v=0.5 in a circular area. Brush size is adjustable with the slider. Use <strong>Clear</strong> to reset to a blank field (u=1, v=0) for free-form painting. Use <strong>Reset</strong> to reload the current preset&rsquo;s seed pattern.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 5: Controls & Parameters -->
+      <div class="guide-section">
+        <div class="guide-section-header">
+          <div>
+            <span class="guide-section-title">Controls &amp; Parameters</span>
+            <span class="guide-section-summary">Tune the simulation in real time</span>
+          </div>
+          <span class="guide-chevron">&#9656;</span>
+        </div>
+        <div class="guide-section-body">
+          <div class="guide-section-content">
+            <div class="guide-param-row">
+              <span class="guide-param-name">F (feed rate)</span>
+              <span class="guide-param-desc">How fast U is replenished. Higher F &rarr; more substrate &rarr; different pattern behavior.</span>
+            </div>
+            <div class="guide-param-row">
+              <span class="guide-param-name">k (kill rate)</span>
+              <span class="guide-param-desc">How fast V is removed. Higher k &rarr; V dies faster &rarr; patterns may shrink or vanish.</span>
+            </div>
+            <div class="guide-param-row">
+              <span class="guide-param-name">Speed (substeps)</span>
+              <span class="guide-param-desc">Number of simulation steps per frame. Higher = faster evolution.</span>
+            </div>
+            <div class="guide-param-row">
+              <span class="guide-param-name">Brush size</span>
+              <span class="guide-param-desc">Radius of the painting brush in grid cells.</span>
+            </div>
+            <div class="guide-param-row">
+              <span class="guide-param-name">Grid resolution</span>
+              <span class="guide-param-desc">128/256/512 cells. Higher resolution shows finer detail but uses more GPU.</span>
+            </div>
+            <div class="guide-learn-more">
+              <div class="guide-learn-more-toggle">&#9656; Learn more about the numerical scheme</div>
+              <div class="guide-learn-more-body">
+                <p>The simulation uses Forward-Time Centered-Space (FTCS) with a 5-point Laplacian, dt=1.0, dx=1.0, D<sub>u</sub>=0.2097, D<sub>v</sub>=0.105. Periodic boundary conditions wrap the grid like a torus. The stability constraint dt &le; dx&sup2;/(4D<sub>u</sub>) &asymp; 1.19 is satisfied, so dt=1.0 is marginally stable. The scheme is O(dt, dx&sup2;) and trivially parallelizable on the GPU.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 6: Keyboard Shortcuts -->
+      <div class="guide-section">
+        <div class="guide-section-header">
+          <div>
+            <span class="guide-section-title">Keyboard Shortcuts</span>
+            <span class="guide-section-summary">Quick keys for common actions</span>
+          </div>
+          <span class="guide-chevron">&#9656;</span>
+        </div>
+        <div class="guide-section-body">
+          <div class="guide-section-content">
+            <div class="guide-shortcut-row">
+              <span class="guide-shortcut-key">P</span>
+              <span class="guide-shortcut-desc">Play / Pause</span>
+            </div>
+            <div class="guide-shortcut-row">
+              <span class="guide-shortcut-key">M</span>
+              <span class="guide-shortcut-desc">Step one frame (while paused)</span>
+            </div>
+            <div class="guide-shortcut-row">
+              <span class="guide-shortcut-key">R</span>
+              <span class="guide-shortcut-desc">Reset to current preset</span>
+            </div>
+            <div class="guide-shortcut-row">
+              <span class="guide-shortcut-key">C</span>
+              <span class="guide-shortcut-desc">Clear field (blank canvas)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -58,6 +256,7 @@
     <span id="app-name">Gray-Scott</span>
     <span class="badge">WebGPU</span>
     <span class="title-spacer"></span>
+    <button id="btn-guide" class="guide-btn" title="Open Guide" aria-label="Open Guide">?</button>
   </div>
 
   <div id="preset-bar">

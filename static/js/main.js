@@ -50,6 +50,13 @@ async function init() {
 
     const ui = new UI(solver, renderer, interaction);
 
+    // Welcome modal → Guide link
+    document.getElementById('open-guide-from-welcome')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        dismissWelcome();
+        setTimeout(() => ui.openGuide?.(), 350);
+    });
+
     let frameTimeSmoothed = 0;
     let hudCounter = 0;
     const perfHud = document.getElementById('perf-hud');

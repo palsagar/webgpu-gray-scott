@@ -14,6 +14,7 @@ export class UI {
         this._bindPlayback();
         this._bindResolution();
         this._bindKeyboard();
+        this._bindGuideModal();
     }
 
     _loadAndApplyPreset(presetKey) {
@@ -122,5 +123,42 @@ export class UI {
                 case 'c': clearField(this.solver); break;
             }
         });
+    }
+
+    _bindGuideModal() {
+        const overlay = document.getElementById('guide-overlay');
+        if (!overlay) return;
+
+        const openGuide = () => overlay.classList.add('guide-visible');
+        const closeGuide = () => overlay.classList.remove('guide-visible');
+
+        document.getElementById('btn-guide')?.addEventListener('click', openGuide);
+        document.getElementById('guide-close')?.addEventListener('click', closeGuide);
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeGuide();
+        });
+
+        // Accordion: single-open behavior
+        overlay.querySelectorAll('.guide-section-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const section = header.parentElement;
+                const wasOpen = section.classList.contains('guide-section-open');
+                overlay.querySelectorAll('.guide-section').forEach(s => s.classList.remove('guide-section-open'));
+                if (!wasOpen) section.classList.add('guide-section-open');
+            });
+        });
+
+        // Learn-more expanders: independent toggle
+        overlay.querySelectorAll('.guide-learn-more-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const lm = toggle.parentElement;
+                lm.classList.toggle('learn-more-open');
+                toggle.textContent = lm.classList.contains('learn-more-open')
+                    ? toggle.textContent.replace('\u25B8', '\u25BE')
+                    : toggle.textContent.replace('\u25BE', '\u25B8');
+            });
+        });
+
+        this.openGuide = openGuide;
     }
 }
