@@ -1,4 +1,4 @@
-import { loadPreset, PRESETS } from './presets.js';
+import { loadPreset, clearField, PRESETS } from './presets.js';
 
 export class UI {
     constructor(solver, renderer, interaction) {
@@ -92,6 +92,9 @@ export class UI {
         btnStep?.addEventListener('click', stepOnce);
         btnReset?.addEventListener('click', () => this.reapplyCurrentPreset());
 
+        const btnClear = document.getElementById('btn-clear');
+        btnClear?.addEventListener('click', () => clearField(this.solver));
+
         this._togglePause = togglePause;
         this._stepOnce = stepOnce;
     }
@@ -116,6 +119,7 @@ export class UI {
                 case 'p': this._togglePause?.(); break;
                 case 'm': this._stepOnce?.(); break;
                 case 'r': this.reapplyCurrentPreset(); break;
+                case 'c': clearField(this.solver); break;
             }
         });
     }

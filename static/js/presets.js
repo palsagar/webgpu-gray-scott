@@ -108,3 +108,18 @@ export function loadPreset(name, solver) {
     device.queue.writeBuffer(solver.uNew, 0, uData);
     device.queue.writeBuffer(solver.vNew, 0, vData);
 }
+
+export function clearField(solver) {
+    const { numX, numY, device } = solver;
+    const size = numX * numY;
+    const uData = new Float32Array(size);
+    const vData = new Float32Array(size);
+    uData.fill(1.0);
+    // vData is already all zeros
+
+    solver.resetFlipState();
+    device.queue.writeBuffer(solver.u, 0, uData);
+    device.queue.writeBuffer(solver.v, 0, vData);
+    device.queue.writeBuffer(solver.uNew, 0, uData);
+    device.queue.writeBuffer(solver.vNew, 0, vData);
+}
