@@ -1,0 +1,8 @@
+.git
+docs
+.superpowers
+scripts
+__pycache__
+*.pyc
+gs_primer.md
+CLAUDE.md
