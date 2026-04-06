@@ -237,7 +237,7 @@ body {
   flex: 1;
   width: 14px;
   border-radius: 2px;
-  background: linear-gradient(to bottom, #fde725, #5ec962, #21918c, #3b528b, #440154);
+  background: linear-gradient(to bottom, #fde047, #84cc16, #22c55e, #0d9488, #7c3aed, #3b0764, #000020);
 }
 
 .colorbar-label {
