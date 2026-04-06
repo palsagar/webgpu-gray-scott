@@ -1,14 +1,26 @@
 export const PRESETS = {
-    spots: {
-        name: 'Spots',
-        F: 0.035,
-        k: 0.065,
+    default: {
+        name: 'Default',
+        F: 0.037,
+        k: 0.06,
         seed: 'scatteredCircles',
     },
-    mitosis: {
-        name: 'Mitosis',
-        F: 0.028,
+    solitons: {
+        name: 'Solitons',
+        F: 0.03,
         k: 0.062,
+        seed: 'scatteredCircles',
+    },
+    pulsatingSolitons: {
+        name: 'Pulsating Solitons',
+        F: 0.025,
+        k: 0.06,
+        seed: 'scatteredCircles',
+    },
+    worms: {
+        name: 'Worms',
+        F: 0.078,
+        k: 0.061,
         seed: 'centralSquare',
     },
     mazes: {
@@ -23,17 +35,41 @@ export const PRESETS = {
         k: 0.058,
         seed: 'scatteredCircles',
     },
-    worms: {
-        name: 'Worms',
-        F: 0.046,
-        k: 0.0594,
-        seed: 'centralSquare',
-    },
     chaos: {
         name: 'Chaos',
         F: 0.026,
         k: 0.051,
         seed: 'scatteredCircles',
+    },
+    chaosAndHoles: {
+        name: 'Chaos & Holes',
+        F: 0.034,
+        k: 0.056,
+        seed: 'scatteredCircles',
+    },
+    movingSpots: {
+        name: 'Moving Spots',
+        F: 0.014,
+        k: 0.054,
+        seed: 'scatteredCircles',
+    },
+    spotsAndLoops: {
+        name: 'Spots & Loops',
+        F: 0.018,
+        k: 0.051,
+        seed: 'scatteredCircles',
+    },
+    waves: {
+        name: 'Waves',
+        F: 0.014,
+        k: 0.045,
+        seed: 'largeCentralBlock',
+    },
+    uSkateWorld: {
+        name: 'U-Skate World',
+        F: 0.062,
+        k: 0.06093,
+        seed: 'centralSquare',
     },
 };
 

@@ -6,7 +6,7 @@ export class UI {
         this.renderer = renderer;
         this.interaction = interaction;
 
-        this.currentPreset = 'mitosis';
+        this.currentPreset = 'default';
         this.substepsPerFrame = 16;
 
         this._bindPresetButtons();

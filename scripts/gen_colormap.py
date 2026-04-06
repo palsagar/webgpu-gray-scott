@@ -40,18 +40,15 @@ def _interpolate_colormap(
     return result
 
 
-# Dark purple -> bright green -> yellow (VisualPDE-inspired)
+# Reference colormap from pmneila/grayscott
+# Tight green->yellow at 0.20-0.21 creates vivid bright edges
 COLORMAP = _interpolate_colormap([
-    (  0,   0,   0,  32),  # dark navy
-    ( 25,  20,   0,  80),  # deep indigo
-    ( 50,  75,   0, 130),  # purple
-    ( 75, 100,  20, 180),  # blue-purple
-    (100,  13, 148, 136),  # teal
-    (130,  34, 197,  94),  # green
-    (160,  74, 222,  60),  # bright green
-    (190, 132, 204,  22),  # yellow-green
-    (220, 234, 179,   8),  # yellow
-    (255, 253, 224,  71),  # bright yellow
+    (  0,   0,   0,   0),  # black
+    ( 51,   0, 255,   0),  # pure green
+    ( 54, 255, 255,   0),  # yellow
+    (102, 255,   0,   0),  # red
+    (153, 255, 255, 255),  # white
+    (255, 255, 255, 255),  # white (constant)
 ])
 
 assert len(COLORMAP) == 256, f"Expected 256 entries, got {len(COLORMAP)}"

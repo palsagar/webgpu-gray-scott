@@ -46,7 +46,7 @@ async function init() {
     const renderer = new Renderer(container, device, solver);
     const interaction = new Interaction(renderer.canvas, solver);
 
-    loadPreset('mitosis', solver);
+    loadPreset('default', solver);
 
     const ui = new UI(solver, renderer, interaction);
 
