@@ -38,11 +38,12 @@ async function init() {
         document.getElementById('device-lost-banner').style.display = 'block';
     });
 
-    const numX = 256;
-    const numY = 256;
+    const container = document.getElementById('canvas-container');
+    const numY = 512;
+    const aspectRatio = container.clientWidth / container.clientHeight;
+    const numX = Math.round(numY * aspectRatio / 8) * 8;
 
     const solver = await Solver.create(device, numX, numY);
-    const container = document.getElementById('canvas-container');
     const renderer = new Renderer(container, device, solver);
     const interaction = new Interaction(renderer.canvas, solver);
 
