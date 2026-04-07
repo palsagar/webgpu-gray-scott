@@ -5,10 +5,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Running the Project
 
 ```bash
-uv run uvicorn server:app --port 8001
+uv run uvicorn server:app --port 8002
 ```
 
-Open `http://localhost:8001` in Chrome/Edge (requires WebGPU). No build step — vanilla ES modules served directly. `NoCacheMiddleware` in `server.py` disables browser caching for `.js/.css/.html/.wgsl` files during development.
+Open `http://localhost:8002` in Chrome/Edge (requires WebGPU). No build step — vanilla ES modules served directly. `NoCacheMiddleware` in `server.py` disables browser caching for `.js/.css/.html/.wgsl` files during development.
 
 ## Architecture
 

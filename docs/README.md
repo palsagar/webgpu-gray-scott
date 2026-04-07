@@ -48,7 +48,7 @@ graph TD
 ## Quick Start
 
 ```bash
-uv run uvicorn server:app --port 8001
+uv run uvicorn server:app --port 8002
 ```
 
-Open `http://localhost:8001` in Chrome 113+ (WebGPU required).
+Open `http://localhost:8002` in Chrome 113+ (WebGPU required).

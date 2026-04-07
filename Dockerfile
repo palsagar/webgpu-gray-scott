@@ -8,8 +8,8 @@ RUN pip install --no-cache-dir fastapi uvicorn
 COPY server.py .
 COPY static/ static/
 
-ENV PORT=8000
-EXPOSE 8000
+ENV PORT=8002
+EXPOSE 8002
 
 HEALTHCHECK --interval=10s --timeout=3s --start-period=5s \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:${PORT}/api/health')" || exit 1

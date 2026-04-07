@@ -37,7 +37,7 @@ Watch Turing patterns emerge — spots, mazes, worms, and chaos — all computed
 git clone https://github.com/palsagar/webgpu-gray-scott.git
 cd webgpu-gray-scott
 docker build -t gray-scott .
-docker run -p 8000:8000 gray-scott
+docker run -p 8002:8002 gray-scott
 ```
 
 **With Python**:
@@ -45,10 +45,10 @@ docker run -p 8000:8000 gray-scott
 ```bash
 git clone https://github.com/palsagar/webgpu-gray-scott.git
 cd webgpu-gray-scott
-uv run uvicorn server:app --port 8000
+uv run uvicorn server:app --port 8002
 ```
 
-Open `http://localhost:8000` in Chrome 113+ (WebGPU required).
+Open `http://localhost:8002` in Chrome 113+ (WebGPU required).
 
 ## How It Works
 
