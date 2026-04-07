@@ -61,6 +61,8 @@ Two chemicals on a 2D grid: U (substrate, fed at rate F) and V (activator, remov
 
 The numerical method is FTCS with dt=1.0, dx=1.0, Du=0.2097, Dv=0.105. A single WebGPU compute shader dispatches an 8×8 workgroup grid over the domain. Ping-pong buffer pairs avoid read/write hazards. All data stays on the GPU — the CPU only reads back the V field for colormap visualization via async staging buffers.
 
+For detailed technical documentation, see the **[Documentation Hub](docs/README.md)**.
+
 ## Project Structure
 
 ```
