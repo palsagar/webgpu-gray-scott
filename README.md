@@ -6,6 +6,7 @@
 
 Watch Turing patterns emerge — spots, mazes, worms, and chaos — all computed on the GPU at interactive frame rates. Paint strokes to seed patterns, tune parameters live, and explore 12 distinct behavioral regimes.
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-patterns.gpuphysics.dev-ff6b6b)](https://patterns.gpuphysics.dev)
 [![WebGPU](https://img.shields.io/badge/WebGPU-Compute_Shaders-blue)](https://www.w3.org/TR/webgpu/)
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-green)](https://fastapi.tiangolo.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](#)
