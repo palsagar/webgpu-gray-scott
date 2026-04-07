@@ -98,6 +98,10 @@ WebGPU support required: Chrome 113+, Edge 113+, or Firefox Nightly with `dom.we
 | `J` / `K` | Decrease / increase F (feed rate) |
 | `H` / `L` | Decrease / increase k (kill rate) |
 
+## Contributing
+
+Feature requests, bug reports, and pull requests are welcome. Open an [issue](https://github.com/palsagar/webgpu-gray-scott/issues) to suggest a new preset, visualization mode, or interaction feature, or submit a PR directly.
+
 ## Background
 
 After building [FlowLab](https://github.com/palsagar/webgpu-fluid-solver) — a real-time Navier-Stokes solver in the browser — the natural next step was to explore another classic PDE system through the same lens. The Gray-Scott reaction-diffusion model is in many ways the perfect complement: where fluid dynamics requires a staggered MAC grid, pressure projection, and semi-Lagrangian advection, Gray-Scott needs just a single explicit update step with a 5-point Laplacian. The physics are simpler, but the phenomenology is richer — the (F, k) parameter plane contains an extraordinary variety of self-organizing patterns, from stable solitons to spatiotemporal chaos, all emerging from the same two-line equation.

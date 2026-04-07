@@ -264,6 +264,8 @@
     <span id="app-name">Gray-Scott</span>
     <span class="badge">WebGPU</span>
     <span class="title-spacer"></span>
+    <a href="https://sagar-pal.dev" target="_blank" rel="noopener" class="author-link" title="Sagar Pal">Author</a>
+    <a href="https://github.com/palsagar/webgpu-gray-scott" target="_blank" rel="noopener" class="gh-pill" title="Star on GitHub">GitHub <span id="gh-stars"></span></a>
     <button id="btn-guide" class="guide-btn" title="Open Guide" aria-label="Open Guide">?</button>
   </div>
 
@@ -341,6 +343,16 @@
     document.getElementById('no-webgpu').style.display = 'flex';
     document.getElementById('app').style.display = 'none';
   }
+</script>
+
+<script>
+  fetch('https://api.github.com/repos/palsagar/webgpu-gray-scott')
+    .then(r => r.json())
+    .then(d => {
+      const el = document.getElementById('gh-stars');
+      if (el && d.stargazers_count != null) el.textContent = d.stargazers_count;
+    })
+    .catch(() => {});
 </script>
 
 <script type="module" src="js/main.js"></script>
