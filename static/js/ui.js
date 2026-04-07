@@ -103,9 +103,12 @@ export class UI {
     _bindResolution() {
         document.querySelectorAll('[data-res]').forEach(btn => {
             btn.addEventListener('click', () => {
-                const res = parseInt(btn.dataset.res);
-                this.solver.resize(res, res);
-                this.renderer.resize(res, res);
+                const numY = parseInt(btn.dataset.res);
+                const container = document.getElementById('canvas-container');
+                const aspectRatio = container.clientWidth / container.clientHeight;
+                const numX = Math.round(numY * aspectRatio / 8) * 8;
+                this.solver.resize(numX, numY);
+                this.renderer.resize(numX, numY);
                 this.reapplyCurrentPreset();
                 document.querySelectorAll('[data-res]').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
