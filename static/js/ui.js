@@ -116,6 +116,18 @@ export class UI {
         });
     }
 
+    _nudgeParam(param, delta) {
+        const slider = document.getElementById(param === 'F' ? 'slider-f' : 'slider-k');
+        if (!slider) return;
+        const min = parseFloat(slider.min);
+        const max = parseFloat(slider.max);
+        const v = Math.min(max, Math.max(min, this.solver.params[param] + delta));
+        this.solver.setParams({ [param]: v });
+        slider.value = v;
+        const decimals = param === 'F' ? 3 : 4;
+        document.getElementById(param === 'F' ? 'val-f' : 'val-k').textContent = v.toFixed(decimals);
+    }
+
     _bindKeyboard() {
         document.addEventListener('keydown', (e) => {
             if (e.target.tagName === 'INPUT') return;
@@ -124,6 +136,10 @@ export class UI {
                 case 'm': this._stepOnce?.(); break;
                 case 'r': this.reapplyCurrentPreset(); break;
                 case 'c': clearField(this.solver); break;
+                case 'j': this._nudgeParam('F', -0.001); break;
+                case 'k': this._nudgeParam('F',  0.001); break;
+                case 'h': this._nudgeParam('k', -0.0001); break;
+                case 'l': this._nudgeParam('k',  0.0001); break;
             }
         });
     }

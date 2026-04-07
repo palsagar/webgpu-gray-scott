@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧬 Gray-Scott
+# Gray-Scott
 
 **Real-time reaction-diffusion patterns in your browser, powered by WebGPU**
 
@@ -12,14 +12,22 @@ Watch Turing patterns emerge — spots, mazes, worms, and chaos — all computed
 
 </div>
 
+![Labyrinthine patterns from the Default preset](static/screenshots/default.png)
+
+<p align="center">
+  <img src="static/screenshots/solitons.png" width="49%" alt="Solitons — stable spot patterns">
+  <img src="static/screenshots/chaos-holes.png" width="49%" alt="Chaos & Holes — turbulent dynamics">
+</p>
+
 ## Features
 
 - **GPU-accelerated solver** — FTCS (Forward-Time Centered-Space) with 5-point Laplacian, periodic boundaries, all in a single WGSL compute shader
 - **12 curated presets** — Spots, solitons, worms, mazes, holes, chaos, waves, and more from the Pearson classification
+- **Aspect-ratio-aware grid** — Grid width adapts to your browser window so patterns remain undistorted
 - **Brush painting** — Click and drag to seed activator chemical onto the field
-- **Live parameter tuning** — Drag F (feed) and k (kill) sliders and watch patterns morph in real time
+- **Live parameter tuning** — Drag F/k sliders or use vim-style keyboard shortcuts (J/K for feed rate, H/L for kill rate) for fine-grained control
 - **Interactive guide** — Accordion-style explainer covering the Gray-Scott equations, Turing instability, and all controls
-- **Adjustable grid** — 128, 256, or 512 resolution with configurable simulation speed
+- **Adjustable grid** — 256, 512, or 1024 vertical resolution with configurable simulation speed
 
 ## Quick Start
 
@@ -85,6 +93,8 @@ WebGPU support required: Chrome 113+, Edge 113+, or Firefox Nightly with `dom.we
 | `M` | Step one frame |
 | `R` | Reset to current preset |
 | `C` | Clear field (blank canvas) |
+| `J` / `K` | Decrease / increase F (feed rate) |
+| `H` / `L` | Decrease / increase k (kill rate) |
 
 ## Background
 
